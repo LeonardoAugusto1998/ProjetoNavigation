@@ -4,11 +4,13 @@
     "slug": "tarefas2",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/play.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/play.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#ffffff",
+      "widht": 40,
+      "height": 40
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -21,7 +23,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/play.png",
         "backgroundColor": "#FFFFFF"
       }
     },
