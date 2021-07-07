@@ -1,5 +1,5 @@
 
-import React, { createContext, useEffect } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import * as MediaLibrary from 'expo-media-library';
 import { Alert } from "react-native";
 
@@ -7,10 +7,22 @@ import { Alert } from "react-native";
 export const AuthContext = createContext({})
 export default function AudioProvider({children}){
 
+    const [soundFiles, setSoundFiles] = useState([])
+    
+
     async function AudioFiles(){
-        const files = await MediaLibrary.getAssetsAsync({
+        let media = await MediaLibrary.getAssetsAsync({
             mediaType: 'audio'
         });
+        
+
+        media = await MediaLibrary.getAssetsAsync({
+            mediaType: 'audio',
+            first:  media.totalCount,
+        });
+        setSoundFiles(media.assets)
+        
+        console.log(media.assets);
     }
 
   async function permitionFunc(){
@@ -60,7 +72,7 @@ export default function AudioProvider({children}){
       }, [])
 
     return(
-        <AuthContext.Provider>
+        <AuthContext.Provider value={{ soundFiles }}>
         {children}
         </AuthContext.Provider>
     );    
