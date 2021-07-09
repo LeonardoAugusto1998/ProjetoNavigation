@@ -2,12 +2,14 @@
 import React, { createContext, useEffect, useState } from "react";
 import * as MediaLibrary from 'expo-media-library';
 import { Alert } from "react-native";
+import { Audio } from 'expo-av';
 
 
 export const AuthContext = createContext({})
 export default function AudioProvider({children}){
 
-    const [soundFiles, setSoundFiles] = useState([])
+    const [soundFiles, setSoundFiles] = useState([]);
+    const [sound, setSound] = useState()
     
 
     async function AudioFiles(){
@@ -20,9 +22,9 @@ export default function AudioProvider({children}){
             mediaType: 'audio',
             first:  media.totalCount,
         });
+
         setSoundFiles(media.assets)
-        
-        console.log(media.assets);
+
     }
 
   async function permitionFunc(){
@@ -69,7 +71,12 @@ export default function AudioProvider({children}){
 
     useEffect( () => {
         permitionFunc();
-      }, [])
+      }, []);
+
+
+      async function playSound(){
+
+      }
 
     return(
         <AuthContext.Provider value={{ soundFiles }}>

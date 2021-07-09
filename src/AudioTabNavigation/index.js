@@ -15,7 +15,7 @@ export default function AudioTabNavigation(){
 
     function PlusBottom({bn, color}){
         return(
-          <LinearGradient colors={['white' , 'purple']} style={[s.addbut, {backgroundColor: bn ? '#8EA8F5' : '#567DF0'}]}>
+          <LinearGradient start={[0.1, 0.4]} colors={['white' , 'grey']} style={[s.addbut, {backgroundColor: bn ? '#8EA8F5' : '#567DF0'}]}>
             <Text><Ionicons name={bn ? 'play' : 'play-outline'} size={35} color={color}/></Text>
           </LinearGradient>
         );
@@ -27,11 +27,11 @@ export default function AudioTabNavigation(){
         <Tab.Navigator
         tabBarOptions={{
       style:{
-        backgroundColor:'#052439',
-        marginRight:45,
-        marginLeft:45,
+        backgroundColor:'rgba(255,255,255,0.2)',
+        marginRight:70,
+        marginLeft:70,
         bottom:25,
-        borderRadius:15,
+        borderRadius:25,
         elevation: 20,
         position:'absolute',
         shadowColor:'black',
@@ -48,18 +48,18 @@ export default function AudioTabNavigation(){
     >
         <Tab.Screen name='Musicas' component={Musicas} options={{
           tabBarIcon: ({focused, color, size}) => {
-            return <Ionicons name={ focused ? 'headset' : 'headset-outline'} size={30} color={color}/>
+            return <Ionicons name={ focused ? 'headset' : 'headset-outline'} size={30} color={focused ? 'black' : '#d9d7dd'}/>
           }
           
         }}/>
         <Tab.Screen name='Player' component={Player} options={{
           tabBarIcon: ({focused, color, size}) => {
-            return <PlusBottom bn={focused} color={color} size={size}/>
+            return <PlusBottom bn={focused} color={focused ? 'black' : '#d9d7dd'} size={size}/>
           }
         }}/>
         <Tab.Screen name='PlayList' component={PlayList} options={{
           tabBarIcon: ({focused, color, size}) => {
-            return <Ionicons name={ focused ? 'list-circle' : 'list-circle-outline'} size={34} color={color}/>
+            return <Ionicons name={ focused ? 'list-circle' : 'list-circle-outline'} size={34} color={focused ? 'black' : '#d9d7dd'}/>
           }
           
         }}/>
@@ -70,13 +70,13 @@ export default function AudioTabNavigation(){
 
 const s = StyleSheet.create({
     addbut:{
-      bottom:25,
+      bottom:15,
       width:55,
       height:55,
       borderRadius:35,
       justifyContent:'center',
       alignItems:'center',
-      elevation:10,
+      elevation:20,
       shadowOpacity: 2,
       shadowColor:'black'
     }
